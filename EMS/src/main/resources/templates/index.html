@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-add { background: #28a745; color: white; }
+        .btn-update { background: #ffc107; }
+        .btn-delete { background: #dc3545; color: white; }
+        .btn-delete-all { background: #6c757d; color: white; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Management System</h1>
+    <div class="container">
+        <div class="actions">
+            <button class="btn-add" onclick="addEmployee()">Add Employee</button>
+            <button class="btn-update" onclick="updateEmployee()">Update Employee</button>
+            <button class="btn-delete" onclick="deleteEmployee()">Delete Employee</button>
+            <button class="btn-delete-all" onclick="deleteAllEmployees()">Delete All</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody id="employee-table">
+                <!-- Employees will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        function addEmployee() {
+            Swal.fire({
+                title: 'Add Employee',
+                html: '<input id="empName" placeholder="Enter Name" class="swal2-input">' +
+                      '<input id="empDept" placeholder="Enter Department" class="swal2-input">',
+                showCancelButton: true,
+                confirmButtonText: 'Add',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let name = document.getElementById("empName").value;
+                    let department = document.getElementById("empDept").value;
+                    let table = document.getElementById("employee-table");
+                    let row = table.insertRow();
+                    row.innerHTML = `<td>${table.rows.length}</td><td>${name}</td><td>${department}</td>`;
+                }
+            });
+        }
+
+        function updateEmployee() {
+            Swal.fire({
+                title: 'Update Employee',
+                html: '<input id="empID" placeholder="Enter Employee ID" class="swal2-input">' +
+                      '<input id="newName" placeholder="New Name" class="swal2-input">' +
+                      '<input id="newDept" placeholder="New Department" class="swal2-input">',
+                showCancelButton: true,
+                confirmButtonText: 'Update',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let id = document.getElementById("empID").value;
+                    let newName = document.getElementById("newName").value;
+                    let newDept = document.getElementById("newDept").value;
+                    let table = document.getElementById("employee-table");
+                    if (id > 0 && id <= table.rows.length) {
+                        table.rows[id-1].cells[1].innerText = newName;
+                        table.rows[id-1].cells[2].innerText = newDept;
+                    }
+                }
+            });
+        }
+
+        function deleteEmployee() {
+            Swal.fire({
+                title: 'Delete Employee',
+                input: 'number',
+                inputLabel: 'Enter Employee ID to delete',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let id = result.value;
+                    let table = document.getElementById("employee-table");
+                    if (id > 0 && id <= table.rows.length) {
+                        table.deleteRow(id - 1);
+                    }
+                }
+            });
+        }
+
+        function deleteAllEmployees() {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "All employees will be deleted!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete all",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("employee-table").innerHTML = "";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
