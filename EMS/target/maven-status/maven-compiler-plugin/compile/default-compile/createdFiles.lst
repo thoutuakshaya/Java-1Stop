@@ -1,6 +1,6 @@
+com\example\ems\controllers\HomeController.class
 com\example\ems\service\EmployeeService.class
 com\example\ems\model\Employee.class
 com\example\ems\EmployeeManagementSystemApplication.class
-com\example\ems\controllers\HomeController.class
 com\example\ems\repository\EmployeeRepository.class
 com\example\ems\controller\EmployeeController.class

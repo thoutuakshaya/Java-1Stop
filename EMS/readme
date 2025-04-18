@@ -1,0 +1,46 @@
+maven setup
+1.check whether java is installed.
+    CMD ->Java -version
+2.JAVA_HOME ->SYSTEM ENVIRONMENT VARIABLES ->NEW ->JAVA_HOME ->C:\Program Files\Java\jdk1.8.0_161
+3.DOWNLOAD maven
+4.unzip maven to C:\apache-maven-3.5.0
+5.CMD ->MAVEN_HOME ->SYSTEM ENVIRONMENT VARIABLES ->NEW ->MAVEN_HOME ->C:\apache-maven-3.5.0
+ADD NEW VARIABLES
+6.check whether maven is installed.
+    CMD ->MAVEN -version
+
+
+
+POM - PROJECT OBJECT MODEL(.XML)
+
+1. pom.xml is the file that contains all the configuration information of the project.
+2. It is an XML file that contains information about the project and configuration details used by Maven to build the project.
+3. It contains the following information:
+   1. Project dependencies
+   2. Project plugins
+   3. Goals
+   4. Build profiles
+   5. Project versioning information
+4.ARTIFACT ID ->UNIQUE IDENTIFIER FOR THE PROJECT
+5.GROUP ID ->UNIQUE IDENTIFIER FOR THE GROUP OF PROJECTS
+6.VERSION ->VERSION OF THE PROJECT
+7.PACKAGING ->TYPE OF PROJECT (JAR, WAR, EAR)
+
+
+for an error free code
+1.prepare
+2.validate
+3.compile
+4.test
+5.package
+6.install
+7.deploy
+
+mvn clean dependency:copy-dependencies package
+mvn clean install
+
+build profile is configurationvalures used for overriding maven defaultvalues.
+3 types
+1. per project
+2.per user
+3.global
