@@ -48,7 +48,7 @@ build profile is configurationvalures used for overriding maven defaultvalues.
 
 
 
-
+FRAMEWORKS
 
 
 
@@ -127,3 +127,23 @@ com.example.ems
  ├── repositories
  │    └── EmployeeRepository.java (extends JpaRepository<Employee, Long>)
  ├── EmsApplication.java (your main @SpringBootApplication class)
+
+
+SPRING Ioc
+1.dependency injection
+2.object defines its dependencies via constructor or its arguments to a factory method or property that the instance sets for the object past construction.
+3.internal software used for creating main objects and dependent objects.
+4.Ioc Takes care of doing DI and gives us object.
+5.Ioc (inversion of control) ->reversal of regular flow.
+In spring we have 3 different di
+1.settler injection
+2.constructor injection
+3.argument to factory method.
+
+IOC container has two 
+   1.Bean factory. ->>org.springfarmework.beans
+   2.Application context.->>org.springframework.context
+
+bean factory is an interface which provides configuratio mechanism which can manage objects and provide functionalities.
+application context is a sub part odf bean factory which gives it more specific functionality or enterprise specific functionality.
+
